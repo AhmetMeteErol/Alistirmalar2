@@ -1,0 +1,23 @@
+# This code is a game called "mastermind".
+# User guess the number between 10-98 
+# that computer decided 
+
+from random import randint 
+
+sayi = randint(10, 99)
+
+right_place_count = 0
+wrong_place_count = 0
+
+deneme = input("Please guess the number: ")
+
+while not int(deneme) == sayi: 
+    if (deneme[0] or deneme[1]) == (str(sayi)[0] or str(sayi)[1]):
+        right_place_count += 1
+        print(f"right_place_count = {right_place_count}")
+    elif (deneme[0] or deneme[1]) != (str(sayi)[0] or str(sayi)[1]):
+        wrong_place_count -= 1
+        print(f"wrong_place_count = {wrong_place_count}") 
+
+# if deneme[0] == deneme[1]:
+#     print("You can not type numbers who has same digits!")

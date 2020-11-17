@@ -8,3 +8,4 @@ def fibonacci(n):                               # function finds n'th fibonacci 
 
 for i in range(1,31):                           # It was struggling to print in recursive function so i used a for loop
     print(fibonacci(i), end= ' ')
+    #    print(f"{i}.number:{fibonacci(i)}", end= ' ')              # If we want to be sure about the order of numbers

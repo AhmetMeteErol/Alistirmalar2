@@ -3,21 +3,41 @@
 # that computer decided 
 
 from random import randint 
+# Codes of the game 'mastermind' 
 
-sayi = randint(10, 99)
+# Computer takes a random number and user tries to guess it
+# number can not have two same digits and should be in the interval 10-98
 
-right_place_count = 0
-wrong_place_count = 0
+from random import randint                                                        # Importing randint from random 
+                                                                                  # to select a number 'randomly'
 
-deneme = input("Please guess the number: ")
 
-while not int(deneme) == sayi: 
-    if (deneme[0] or deneme[1]) == (str(sayi)[0] or str(sayi)[1]):
-        right_place_count += 1
-        print(f"right_place_count = {right_place_count}")
-    elif (deneme[0] or deneme[1]) != (str(sayi)[0] or str(sayi)[1]):
-        wrong_place_count -= 1
-        print(f"wrong_place_count = {wrong_place_count}") 
+number = randint(10,98)
+if (str(number)[0] == str(number)[1]):                                            # One more try for the possibility of same digits
+    number = randint(10,98)
 
-# if deneme[0] == deneme[1]:
-#     print("You can not type numbers who has same digits!")
+
+guess = input("You have 3 lives. Please guess the number: ")
+
+lives = 3
+valid_position = 0
+invalid_position = 0
+
+while lives > 0:                                                                  # While his lives are not finished
+    if (len(guess) == 2) and (guess[0] != guess[1]) and (guess.isdigit())         # If the guess is valid
+
+        if guess[0] == str(number)[0]) or guess[1] == str(number)[1]):            # first digits or second digits are same statement
+            valid_position += 1
+        elif (str(guess)[0] == str(number)[1]) or (str(guess)[1] == str(number)[0]):
+            invalid_position -= 1
+    lives -= 1
+
+print(f"doğru yer sayacı: {valid_position}")   
+print(f"yanlış yer sayacı: {invalid_position}")   
+
+
+
+
+
+
+print(number)

@@ -1,43 +1,48 @@
-# This code is a game called "mastermind".
-# User guess the number between 10-98 
-# that computer decided 
-
-from random import randint 
 # Codes of the game 'mastermind' 
 
 # Computer takes a random number and user tries to guess it
 # number can not have two same digits and should be in the interval 10-98
 
-from random import randint                                                        # Importing randint from random 
-                                                                                  # to select a number 'randomly'
+from random import randint      # Importing randint from random 
+                                # to select a number 'randomly'
 
 
 number = randint(10,98)
-if (str(number)[0] == str(number)[1]):                                            # One more try for the possibility of same digits
+
+while (str(number)[0] == str(number)[1]):      
     number = randint(10,98)
 
+guess = 0
 
-guess = input("You have 3 lives. Please guess the number: ")
+while (guess != number):                                                                  
+    guess = input("Guess the number choosen by PC: ")
+    
+    if (len(guess) == 2) and (guess[0] != guess[1]) and (guess.isdigit()):                
+        right_digit = 0
+        false_order_digit = 0
+        number = str(number)
+        guess = str(guess)
+        if guess[0] == str(number)[0]:
+            right_digit += 1        
+        if guess[1] == str(number)[1]:      
+            right_digit += 1
+        if (guess[0] == str(number)[1]):
+            false_order_digit -= 1             
+        if (guess[1] == str(number)[0]):
+            false_order_digit -= 1
+        
+        if right_digit == 0 and false_order_digit == 0:
+            print("Skor: 0.")
+        if right_digit != 0 and false_order_digit == 0:
+            print("Valid score: ", right_digit)
+        if right_digit == 0 and false_order_digit != 0:
+            print("Invalid score: ", false_order_digit)
+    else:
+        print("Please enter a valid number")
+    
 
-lives = 3
-valid_position = 0
-invalid_position = 0
-
-while lives > 0:                                                                  # While his lives are not finished
-    if (len(guess) == 2) and (guess[0] != guess[1]) and (guess.isdigit())         # If the guess is valid
-
-        if guess[0] == str(number)[0]) or guess[1] == str(number)[1]):            # first digits or second digits are same statement
-            valid_position += 1
-        elif (str(guess)[0] == str(number)[1]) or (str(guess)[1] == str(number)[0]):
-            invalid_position -= 1
-    lives -= 1
-
-print(f"doğru yer sayacı: {valid_position}")   
-print(f"yanlış yer sayacı: {invalid_position}")   
+print("Congratulations!")
+print(f"PC has chosen '{number}''.") 
 
 
-
-
-
-
-print(number)
+    

@@ -10,22 +10,23 @@ def binary_search(serie, value):
     begin_indice = 0                                                            # We start from 0. index at the begining
     end_indice = len(serie)-1                                                   # And termine the interval with last element [here len(list)-1]
 
-    while (end_indice >= begin_indice) and (len(serie) != 1):                                         # loops till there is one number 
+    while (end_indice >= begin_indice):                                         # loops till there is one number 
         mid_indice = (end_indice + begin_indice) // 2            
         mid_point_value = serie[mid_indice]
         
         if mid_point_value == value:                                            # We termine the loop when we reach our goal
             return mid_indice
 
-        elif mid_point_value < value:
-            end_indice = mid_indice - 1
+        elif mid_point_value > value:
+            end_indice = mid_indice - 1   
+
         else:
-            begin_indice = mid_indice + 1
+            begin_indice = mid_indice + 1          
+            
     
     return False
 
 listem = [1,2,4,5,6,7,8]
 aranan_eleman = 6
 
-print(binary_search(listem,aranan_eleman))
-# Always returns 'False' idk why
+print(f"Your '{aranan_eleman}' is in {binary_search(listem,aranan_eleman)}. place of the list.")
